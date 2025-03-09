@@ -3,6 +3,11 @@ import { UsersModule } from '../modules/users/users.module'
 import { DatabaseModule } from './database/database.module'
 import { ConfigModule } from '@nestjs/config'
 import { validate } from './config/env'
+import { AuthModule } from 'src/modules/auth/auth.module'
+import { APP_GUARD } from '@nestjs/core'
+import { AuthGuard } from 'src/modules/auth/auth.guard'
+import { CategoriesModule } from 'src/modules/categories/categories.module'
+import { BankAccountsModule } from 'src/modules/bank-accounts/bank-accounts.module'
 
 @Module({
   imports: [
@@ -11,9 +16,17 @@ import { validate } from './config/env'
       isGlobal: true
     }),
     UsersModule,
-    DatabaseModule
+    DatabaseModule,
+    AuthModule,
+    CategoriesModule,
+    BankAccountsModule
   ],
   controllers: [],
-  providers: []
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: AuthGuard
+    }
+  ]
 })
 export class AppModule {}
