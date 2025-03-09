@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { NestFactory } from '@nestjs/core'
 import { AppModule } from './shared/app.module'
 import { ValidationPipe } from '@nestjs/common'
