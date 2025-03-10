@@ -10,11 +10,19 @@ export class BankAccountsRepository {
     return this.prismaService.bankAccount.create(createDto)
   }
 
-  findUnique(findUnique: Prisma.BankAccountFindUniqueArgs) {
-    return this.prismaService.bankAccount.findUnique(findUnique)
-  }
-
   findMany(findManyDto: Prisma.BankAccountFindManyArgs) {
     return this.prismaService.bankAccount.findMany(findManyDto)
+  }
+
+  findFirst(findFirstDto: Prisma.BankAccountFindFirstArgs) {
+    return this.prismaService.bankAccount.findFirst(findFirstDto)
+  }
+
+  update(updateDto: Prisma.BankAccountUpdateArgs) {
+    return this.prismaService.bankAccount.update(updateDto)
+  }
+
+  delete(deleteDto: Prisma.BankAccountDeleteArgs) {
+    return this.prismaService.bankAccount.delete(deleteDto)
   }
 }
