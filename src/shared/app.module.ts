@@ -8,6 +8,7 @@ import { APP_GUARD } from '@nestjs/core'
 import { AuthGuard } from 'src/modules/auth/auth.guard'
 import { CategoriesModule } from 'src/modules/categories/categories.module'
 import { BankAccountsModule } from 'src/modules/bank-accounts/bank-accounts.module'
+import { TransactionsModule } from 'src/modules/transactions/transactions.module'
 
 @Module({
   imports: [
@@ -19,7 +20,8 @@ import { BankAccountsModule } from 'src/modules/bank-accounts/bank-accounts.modu
     DatabaseModule,
     AuthModule,
     CategoriesModule,
-    BankAccountsModule
+    BankAccountsModule,
+    TransactionsModule
   ],
   controllers: [],
   providers: [
