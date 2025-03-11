@@ -10,6 +10,6 @@ export class ValidateBankAccountOwnershipService {
       where: { id: bankAccountId, userId }
     })
 
-    if (!isOwner) throw new NotFoundException()
+    if (!isOwner) throw new NotFoundException('Bank account not found')
   }
 }
