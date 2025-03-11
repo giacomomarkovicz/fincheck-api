@@ -6,12 +6,8 @@ import { PrismaService } from '../prisma.service'
 export class CategoriesRepository {
   constructor(private readonly prismaService: PrismaService) {}
 
-  create(createDto: Prisma.CategoryCreateArgs) {
-    return this.prismaService.category.create(createDto)
-  }
-
-  findUnique(findUnique: Prisma.CategoryFindUniqueArgs) {
-    return this.prismaService.category.findUnique(findUnique)
+  findFirst(findFirstDto: Prisma.CategoryFindFirstArgs) {
+    return this.prismaService.category.findFirst(findFirstDto)
   }
 
   findMany(findManyDto: Prisma.CategoryFindManyArgs) {
