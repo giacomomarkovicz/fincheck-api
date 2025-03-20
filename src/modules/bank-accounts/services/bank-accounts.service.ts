@@ -25,23 +25,25 @@ export class BankAccountsService {
       include: { transactions: { select: { type: true, value: true } } }
     })
 
-    return bankAccounts.map(({ transactions, ...bankAccount }) => {
-      const totalTransactions = transactions.reduce(
-        (acc, transaction) =>
-          acc +
-          (transaction.type === 'INCOME'
-            ? transaction.value
-            : -transaction.value),
-        0
-      )
+    return bankAccounts.map(
+      ({ transactions, initialBalance, ...bankAccount }) => {
+        const totalTransactions = transactions.reduce(
+          (acc, transaction) =>
+            acc +
+            (transaction.type === 'INCOME'
+              ? transaction.value
+              : -transaction.value),
+          0
+        )
 
-      const currentBalance = bankAccount.initialBalance + totalTransactions
+        const currentBalance = initialBalance + totalTransactions
 
-      return {
-        currentBalance,
-        ...bankAccount
+        return {
+          currentBalance,
+          ...bankAccount
+        }
       }
-    })
+    )
   }
 
   async update(
